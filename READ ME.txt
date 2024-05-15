@@ -1,0 +1,172 @@
+
+Project Setup
+
+1.) initialize Project
+    D:\zod>npm init -y
+    Wrote to D:\zod\package.json:
+
+    {
+    "name": "zod",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+    }
+
+2.) Install typescript @types/express @types/body-parser zod typedi @types/node express reflect-metadata
+    D:\zod>npm install @types/express
+
+    added 12 packages, and audited 14 packages in 4s
+
+    found 0 vulnerabilities
+
+    D:\zod>npm i typescript
+
+    added 1 package, and audited 2 packages in 4s
+
+    found 0 vulnerabilities
+    npm notice
+    npm notice New major version of npm available! 9.2.0 -> 10.7.0
+    npm notice Changelog: https://github.com/npm/cli/releases/tag/v10.7.0
+    npm notice Run npm install -g npm@10.7.0 to update!
+    npm notice
+
+    D:\zod>npm i @types/body-parser
+
+    up to date, audited 14 packages in 1s
+
+    found 0 vulnerabilities
+
+    D:\zod>npm install zod
+
+    added 1 package, and audited 15 packages in 2s
+
+    1 package is looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+
+    D:\zod>npm i typedi
+
+    added 1 package, and audited 16 packages in 2s
+
+    1 package is looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+
+    D:\zod>npm i @types/node
+
+    up to date, audited 16 packages in 1s
+
+    1 package is looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+
+    D:\zod>npm i express
+
+    added 64 packages, and audited 80 packages in 3s
+
+    13 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+
+    D:\zod>npm i reflect-metadata
+
+    added 1 package, and audited 83 packages in 829ms
+
+    13 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+
+3.) Create tsconfig.json
+    D:\zod>npm run tsc -- --init
+
+    > zod@1.0.0 tsc
+    > tsc --init
+
+
+    Created a new tsconfig.json with:
+                                                                                                                        TS
+    target: es2016
+    module: commonjs
+    strict: true
+    esModuleInterop: true
+    skipLibCheck: true
+    forceConsistentCasingInFileNames: true
+
+
+    You can learn more at https://aka.ms/tsconfig
+
+4.) Modify tsconfig.json & package.json
+    tsconfig.json
+
+        "outDir": "./dist", /* Specify an output folder for all emitted files. */
+
+    package.json
+
+        "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1",
+            "build": "tsc",
+            "start": "node dist/index.js"
+        },
+
+5.) Create index.ts
+    let message: string = 'hello';
+    console.log(message);
+
+6.) Build and Run
+    D:\zod>npm run build
+
+    > zod@1.0.0 build
+    > tsc
+
+
+    D:\zod>npm start
+
+    > zod@1.0.0 start
+    > node dist/index.js
+
+    hello
+
+
+---------------------------------------------------
+Error Encountered :
+
+    D:\zod>npm start
+
+    > zod@1.0.0 start
+    > node dist/index.js
+
+    node:internal/modules/cjs/loader:1042
+    throw err;
+    ^
+
+    Error: Cannot find module 'express'
+    Require stack:
+    - D:\zod\dist\index.js
+        at Module._resolveFilename (node:internal/modules/cjs/loader:1039:15)
+        at Module._load (node:internal/modules/cjs/loader:885:27)
+        at Module.require (node:internal/modules/cjs/loader:1105:19)
+        at require (node:internal/modules/cjs/helpers:103:18)
+        at Object.<anonymous> (D:\zod\dist\index.js:9:35)
+        at Module._compile (node:internal/modules/cjs/loader:1218:14)
+        at Module._extensions..js (node:internal/modules/cjs/loader:1272:10)
+        at Module.load (node:internal/modules/cjs/loader:1081:32)
+        at Module._load (node:internal/modules/cjs/loader:922:12)
+        at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ 'D:\\zod\\dist\\index.js' ]
+    }
+
+    Node.js v18.13.0
+
+Solution : forgot to install express - npm i express
